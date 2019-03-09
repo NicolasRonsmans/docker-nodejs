@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  server:
+    build: ./server/
+    ports:
+      - '3001:3001'
+    volumes:
+      - '/usr/src/app/node_modules'
+    environment:
+      NODE_ENV: production
+      PORT: 3001
+    command: npm start
+  client:
+    build: ./client/
+    ports:
+      - '3000:3000'
+    volumes:
+      - './client/:/usr/src/app'
+      - '/usr/src/app/node_modules'
+    command: npm start
+    depends_on:
+      - server

@@ -1,0 +1,14 @@
+{
+    "name": "docker-nodejs-server",
+    "version": "0.1.0",
+    "private": true,
+    "dependencies": {
+        "express": "^4.16.4"
+    },
+    "devDependencies": {
+        "prettier": "^1.16.4"
+    },
+    "scripts": {
+        "start": "node index.js"
+    }
+}

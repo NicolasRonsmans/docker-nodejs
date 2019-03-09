@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  nginx:
+    build: ./nginx/
+    ports:
+      - '81:81'
+    links:
+      - app:app
+    depends_on:
+      - app
+    restart: always
+    networks:
+      - app-network
+    logging:
+      driver: 'syslog'
+  app:
+    build: .
+    ports:
+      - '3000'
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+    command: npm start
+    restart: always
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
